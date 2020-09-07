@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+table, th {	
+	table-layout:fixed;
+	color: white;
+	border-color: transparent;
+	border-collapse: collapse;
+	width: 155px;
+}
+
+.board {
+	position: relative;
+	text-align: center;
+}
+
+.centered {
+	position: absolute;
+	top: 0%;
+	width:100%;
+	z-index:2;
+}
+
+.brick {
+	background: url(/examples/servlets/images/brick.png);
+	background-repeat: no-repeat;
+	background-size: 75%;
+	background-position: center;
+}
+
+.lumber {
+	background: url(/examples/servlets/images/lumber.png);
+	background-repeat: no-repeat;
+	background-size: 75%;
+	background-position: center;
+}
+
+.ore {
+	background: url(/examples/servlets/images/ore.png);
+	background-repeat: no-repeat;
+	background-size: 75%;
+	background-position: center;
+}
+
+.grain {
+	background: url(/examples/servlets/images/grain.png);
+	background-repeat: no-repeat;
+	background-size: 75%;
+	background-position: center;
+}
+
+.wool {
+	background: url(/examples/servlets/images/wool.png);
+	background-repeat: no-repeat;
+	background-size: 75%;
+	background-position: center;
+}
+
+.desert {
+	color: black;
+	background: url(/examples/servlets/images/desert.png);
+	background-repeat: no-repeat;
+	background-size: 75%;
+	background-position: center;
+}
+
+.house_blue {
+	background: url(/examples/servlets/images/house_blue.png);
+	background-repeat: no-repeat;
+	background-size: 50%;
+}
+
+.house_brown {
+	background: url(/examples/servlets/images/house_brown.png);
+	background-repeat: no-repeat;
+	background-size: 50%;
+}
+
+.house_green {
+	background: url(/examples/servlets/images/house_green.png);
+	background-repeat: no-repeat;
+	background-size: 50%;
+}
+
+.house_orange {
+	background: url(/examples/servlets/images/house_orange.png);
+	background-repeat: no-repeat;
+	background-size: 50%;
+}
+
+.house_red {
+	background: url(/examples/servlets/images/house_red.png);
+	background-repeat: no-repeat;
+	background-size: 50%;
+}
+
+.house_white {
+	background: url(/examples/servlets/images/house_white.png);
+	background-repeat: no-repeat;
+	background-size: 50%;
+	color: black;
+}
+
+.city_blue {
+	background: url(/examples/servlets/images/city_blue.png);
+	background-repeat: no-repeat;
+	background-size: 60%;
+}
+
+.city_brown {
+	background: url(/examples/servlets/images/city_brown.png);
+	background-repeat: no-repeat;
+	background-size: 60%;
+}
+
+.city_green {
+	background: url(/examples/servlets/images/city_green.png);
+	background-repeat: no-repeat;
+	background-size: 60%;
+}
+
+.city_orange {
+	background: url(/examples/servlets/images/city_orange.png);
+	background-repeat: no-repeat;
+	background-size: 60%;
+}
+
+.city_red {
+	background: url(/examples/servlets/images/city_red.png);
+	background-repeat: no-repeat;
+	background-size: 60%;
+}
+
+.city_white {
+	background: url(/examples/servlets/images/city_white.png);
+	background-repeat: no-repeat;
+	background-size: 60%;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.sidenav {
+  overflow: hidden;
+  position: fixed;
+  width: 15%;
+  top: 70px;
+  left: 10px;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: pink;
+  position:fixed;
+  width: 100%;
+  height: 70px;
+  top: 5px;
+  left: 10px;
+  z-index:3;
+}
+
+.main {
+  padding-top: 60px;
+  margin-left: 18%; /* Same width as the sidebar + left position in px */
+}
+
+</style>
+
+<div onclick="showCoords(event)">
+
+<div class="sidenav">
+<h2 style="padding-top:2px;padding-bottom:2px;text-align:center;color:white;background:grey">Player Statistics:</h2>
+*STATISTICS
+</div>
+
+<div class="main">
+
+<h1>
+Welcome to Catan!
+</h1>
+<h2>
+*PLAYER TURN
+<br>
+*KNIGHT LOCATION, *LONGEST ROAD, *LARGEST ARMY
+</h2>
+
+<canvas id="myCanvas" width="900px" height="800px"
+style="z-index:1;position:absolute">
+Your browser does not support the canvas element.
+</canvas>
+
+<table><tr><th style="width:900px;height:800px">
+<!--START OF BOARD-->
+<div class="board">
+	<img src = "/examples/servlets/images/hex.png" alt = "Catan Board" style="width:800px">
+
+<div class="centered">
+
+<!--*START SETTLEMENTS HERE-->
+
+<center><table style="z-index:2">
+	<tr style="height:65px">
+	<th style="width:75px;opacity:0">*AZ1</th><th style="width:75px;transform;opacity:0">*BA2</th><th style="width:75px;opacity:0">*BB1</th><th style="width:75px;opacity:0">*BC2</th><th style="width:75px;opacity:0">*BD1</th><th style="width:75px;opacity:0">*AA2</th><th style="width:75px;opacity:0">*AB1</th>
+	</tr>
+</table></center>
+
+<center><table>
+	<tr style="height:70px">
+	<th>*10</th><th>*11</th><th>*00</th>
+	</tr>
+</table></center>
+
+<center><table>
+	<tr style="height:65px">
+	<th style="width:75px;opacity:0">*AX1</th><th style="width:75px;opacity:0">*AY2</th><th style="width:75px;opacity:0">*BT1</th><th style="width:75px;opacity:0">*BU2</th><th style="width:75px;opacity:0">*BV1</th><th style="width:75px;opacity:0">*BE2</th><th style="width:75px;opacity:0">*BF1</th><th style="width:75px;opacity:0">*AC2</th><th style="width:75px;opacity:0">*AD1</th>
+	</tr>
+</table></center>
+
+<center><table>
+	<tr style="height:70px">
+	<th>*09</th><th>*17</th><th>*12</th><th>*01</th>
+	</tr>
+</table></center>
+
+<center><table>
+	<tr style="height:65px">
+	<th style="width:75px;opacity:0">*AV1</th><th style="width:75px;opacity:0">*AW2</th><th style="width:75px;opacity:0">*BR1</th><th style="width:75px;opacity:0">*BS2</th><th style="width:75px;opacity:0">*CA1</th><th style="width:75px;opacity:0">*CB2</th><th style="width:75px;opacity:0">*BW1</th><th style="width:75px;opacity:0">*BG2</th><th style="width:75px;opacity:0">*BH1</th><th style="width:75px;opacity:0">*AE2</th><th style="width:75px;opacity:0">*AF1</th>
+	</tr>
+</table></center>
+
+<center><table>
+	<tr style="height:70px">
+	<th>*08</th><th>*16</th><th>*18</th><th>*13</th><th>*02</th>
+	</tr>
+</table></center>
+
+<center><table>
+	<tr style="height:65px">
+	<th style="width:75px;opacity:0">*AU2</th><th style="width:75px;opacity:0">*AT1</th><th style="width:75px;opacity:0">*BQ2</th><th style="width:75px;opacity:0">*BP1</th><th style="width:75px;opacity:0">*BZ2</th><th style="width:75px;opacity:0">*BY1</th><th style="width:75px;opacity:0">*BX2</th><th style="width:75px;opacity:0">*BJ1</th><th style="width:75px;opacity:0">*BI2</th><th style="width:75px;opacity:0">*AH1</th><th style="width:75px;opacity:0">*AG2</th>
+	</tr>
+</table></center>
+
+<center><table>
+	<tr style="height:70px">
+	<th>*07</th><th>*15</th><th>*14</th><th>*03</th>
+	</tr>
+</table></center>
+
+<center><table>
+	<tr style="height:65px">
+	<th style="width:75px;opacity:0">*AS2</th><th style="width:75px;opacity:0">*AR1</th><th style="width:75px;opacity:0">*BO2</th><th style="width:75px;opacity:0">*BN1</th><th style="width:75px;opacity:0">*BM2</th><th style="width:75px;opacity:0">*BL1</th><th style="width:75px;opacity:0">*BK2</th><th style="width:75px;opacity:0">*AJ1</th><th style="width:75px;opacity:0">*AI2</th>
+	</tr>
+</table></center>
+
+<center><table>
+	<tr style="height:70px">
+	<th>*06</th><th>*05</th><th>*04</th>
+	</tr>
+</table></center>
+
+<center><table>
+	<tr style="height:65px">
+	<th style="width:80px;opacity:0">*AQ2</th><th style="width:80px;opacity:0">*AP1</th><th style="width:80px;opacity:0">*AO2</th><th style="width:80px;opacity:0">*AN1</th><th style="width:80px;opacity:0">*AM2</th><th style="width:80px;opacity:0">*AL1</th><th style="width:80px;opacity:0">*AK2</th>
+	</tr>	
+</table></center>
+
+<!--*END SETTLEMENTS HERE-->
+
+</div>
+</div>
+</div>
+
+</tr></table>
+
+<!--END OF BOARD-->
+</th></tr></table>
+
+*PLAYER RESOURCES
+*PLAYER DEV CARDS
+
+<p style="color:white;display:inline">*DISCARD RESOURCES
+<p style="color:white;display:inline">*MOVE KNIGHT
+<p style="color:white;display:inline">*ROAD BUILDING
+<p style="color:white;display:inline">*YEAR OF PLENTY
+<p style="color:white;display:inline">*MONOPOLY
+<p style="color:white;display:inline">*TRADE RESOURCES
+</p>
+
+<br>
+
+<!--*CHOOSING SETTLEMENTS-->
+<table><tr>
+<th style="padding:10px;background-color:red;color:black">
+Select a Location to Place an Initial Settlement:<br>
+<form action="MelissaExample" method="POST">
+<select name="location">
+	<option value="selectLocation">Select Location</option>
+	*LOCATIONS
+</select>
+<input type="submit" value="Submit"/><br>
+<input type="hidden" name="endTurn"/>
+<input type="hidden" name="url" value=URL/>
+</form></th>
+</form></th>
+</tr></table>
+<!--*END OF CHOOSING SETTLEMENTS-->
+
+<!--*TURN PART 1-->
+<table style="border:1px solid black"><tr>
+<th style="padding:10px;color:black">Roll Dice:</th>
+<th style="padding:10px;color:black">Play Development Card:</th>
+</tr><tr>
+<th style="padding:10px;color:black">
+<form action="MelissaExample" method="POST">
+<input type="hidden" name="url" value=URL/>
+<input type="submit" name="rollDice" value="Roll Dice"/>
+</form></th>
+<th style="padding:10px;color:black">
+<form action="MelissaExample" method="POST">
+<select name="devCard">
+	<option value="selectDevCard">Select Dev Card</option>
+	*DEV CARDS 1
+</select>
+<input type="submit" value="Submit"/><br>
+<input type="hidden" name="url" value=URL/>
+<input type="hidden" name="devCards1"/>
+</form></th>
+</tr></table>
+<!--*END OF TURN PART 1-->
+
+<br>
+
+<!--*TURN PART 2-->
+<table style="border:1px solid black">
+<tr style="width:100%">
+<th style="padding:10px;color:black">Place a Road:</th>
+<th style="padding:10px;color:black">Place a Settlement:</th>
+<th style="padding:10px;color:black">Upgrade to City:</th>
+<th style="padding:10px;color:black">Purchase Development Card:</th>
+<th style="padding:10px;color:black">Play Development Card:</th>
+</tr>
+<tr>
+<th style="padding:10px;color:black">
+<form action="MelissaExample" method="POST">
+<select name="location1">
+	<option value="selectLocation">Select Location</option>
+	*ACCESSIBLE LOCATIONS 1
+</select>
+<br><p style="font-family:helvetica;font-size:14px;margin-top:1px;margin-bottom:0;display:inline">To:</p><br>
+<select name="location2">
+	<option value="selectLocation">Select Location</option>
+	*ACCESSIBLE LOCATIONS 2
+</select>
+<input type="submit" value="Submit"/><br>
+<input type="hidden" name="url" value=URL/>
+</form></th>
+<th style="padding:10px;color:black">
+<form action="MelissaExample" method="POST">
+<select name="location">
+	<option value="selectLocation">Select Location</option>
+	*ACCESSIBLE LOCATIONS 1
+</select>
+<input type="submit" value="Submit"/><br>
+<input type="hidden" name="url" value=URL/>
+</form></th>
+<th style="padding:10px;color:black">
+<form action="MelissaExample" method="POST">
+<select name="settlement">
+	<option value="selectSettlement">Select Settlement</option>
+	*SETTLEMENTS
+</select>
+<input type="submit" value="Submit"/><br>
+<input type="hidden" name="url" value=URL/>
+</form></th>
+<th style="padding:10px;color:black">
+<form action="MelissaExample" method="POST">
+<input type="hidden" name="url" value=URL/>
+<input type="submit" name="getDevCard" value="Purchase Dev Card"/>
+</form></th>
+<th style="padding:10px;color:black">
+<form action="MelissaExample" method="POST">
+<select name="devCard">
+	<option value="selectDevCard">Select Dev Card</option>
+	*DEV CARDS 2
+</select>
+<input type="submit" value="Submit"/><br>
+<input type="hidden" name="url" value=URL/>
+</form></th></table>
+
+<br>
+<table><tr><td style="width:400px;border:1px solid black">
+<table>
+<form action="MelissaExample" method="POST">
+<tr><th style="padding:10px;color:black;width:200px">Trade Resources With:</th>
+<th style="padding:10px;color:black">
+<select name="playerToTradeWith">
+	<option value="selectPlayer">Select Player</option>
+	*PLAYERS TO TRADE WITH
+</select><br>
+</th></tr>
+<tr><th style="padding:10px;color:black">
+<p style="font-family:helvetica;font-size:14px;margin-top:1px;margin-bottom:0;display:inline">I Want:</p><br>
+<select name="quantity1">
+	<option value="0">0</option>
+	<option value="1">1</option>
+	<option value="2">2</option>
+</select><p style="font-family:helvetica;font-size:14px;margin-top:1px;margin-bottom:0;display:inline"> Brick</p><br>
+<select name="quantity2">
+	<option value="0">0</option>
+	<option value="1">1</option>
+	<option value="2">2</option>
+</select><p style="font-family:helvetica;font-size:14px;margin-top:1px;margin-bottom:0;display:inline"> Grain</p><br>
+<select name="quantity3">
+	<option value="0">0</option>
+	<option value="1">1</option>
+	<option value="2">2</option>
+</select><p style="font-family:helvetica;font-size:14px;margin-top:1px;margin-bottom:0;display:inline"> Lumber</p><br>
+<select name="quantity4">
+	<option value="0">0</option>
+	<option value="1">1</option>
+	<option value="2">2</option>
+</select><p style="font-family:helvetica;font-size:14px;margin-top:1px;margin-bottom:0;display:inline"> Ore</p><br>
+<select name="quantity5">
+	<option value="0">0</option>
+	<option value="1">1</option>
+	<option value="2">2</option>
+</select><p style="font-family:helvetica;font-size:14px;margin-top:1px;margin-bottom:0;display:inline"> Wool</p><br><br><br>
+</th><th style="padding:10px;color:black">
+<p style="font-family:helvetica;font-size:14px;margin-top:1px;margin-bottom:0;display:inline">I am Offering:</p><br>
+<select name="quantity6">
+	<option value="0">0</option>
+	<option value="1">1</option>
+	<option value="2">2</option>
+</select><p style="font-family:helvetica;font-size:14px;margin-top:1px;margin-bottom:0;display:inline"> Brick</p><br>
+<select name="quantity7">
+	<option value="0">0</option>
+	<option value="1">1</option>
+	<option value="2">2</option>
+</select><p style="font-family:helvetica;font-size:14px;margin-top:1px;margin-bottom:0;display:inline"> Grain</p><br>
+<select name="quantity8">
+	<option value="0">0</option>
+	<option value="1">1</option>
+	<option value="2">2</option>
+</select><p style="font-family:helvetica;font-size:14px;margin-top:1px;margin-bottom:0;display:inline"> Lumber</p><br>
+<select name="quantity9">
+	<option value="0">0</option>
+	<option value="1">1</option>
+	<option value="2">2</option>
+</select><p style="font-family:helvetica;font-size:14px;margin-top:1px;margin-bottom:0;display:inline"> Ore</p><br>
+<select name="quantity10">
+	<option value="0">0</option>
+	<option value="1">1</option>
+	<option value="2">2</option>
+</select><p style="font-family:helvetica;font-size:14px;margin-top:1px;margin-bottom:0;display:inline"> Wool</p><br><br>
+<input type="submit" value="Submit"/><br>
+<input type="hidden" name="url" value=URL/>
+</form></th></tr></table>
+</td><td style="width:10px"></td><td style="width:400px;text-align:center;color:black;border:1px solid black">
+<strong>Exchange 4 Resources:</strong><br><br>
+<form action="MelissaExample" method="POST">
+4 <select name="4cards">
+	<option value="selectResource">Select Resource</option>
+	<option value="Brick">Brick</option>
+	<option value="Grain">Grain</option>
+	<option value="Lumber">Lumber</option>
+	<option value="Ore">Ore</option>
+	<option value="Wool">Wool</option>
+</select>
+ for  
+1 <select name="1card">
+	<option value="selectResource">Select Resource</option>
+	<option value="Brick">Brick</option>
+	<option value="Grain">Grain</option>
+	<option value="Lumber">Lumber</option>
+	<option value="Ore">Ore</option>
+	<option value="Wool">Wool</option>
+</select>
+<input type="submit" value="Submit"/>
+<input type="hidden" name="url" value=URL/>
+</form>
+</td>
+</tr></table>
+
+<br><strong>Click a Card Below to Claim:</strong><br>
+<table><tr><th style="width:250px">
+<form action="MelissaExample" method="POST">
+<input type="image" src="/examples/servlets/images/longest_road.png" alt="longestRoadImage" width="250"/>
+<input type="hidden" name="longestRoad"/>
+<input type="hidden" name="url" value=URL/>
+</form></th>
+<th style="width:250px"><form action="MelissaExample" method="POST">
+<input type="image" src="/examples/servlets/images/largest_army.png" alt="largestArmyImage"  width="250"/><br>
+<input type="hidden" name="largestArmy"/>
+<input type="hidden" name="url" value=URL/>
+</form></th></tr></table>
+
+<form action="MelissaExample" method="POST">
+<strong>Think You've Won? Click the Trophy!</strong>
+<input type="image" src="/examples/servlets/images/trophy.png" alt="trophyImage" width="50"/>
+<input type="hidden" name="checkWinner"/>
+<input type="hidden" name="url" value=URL/>
+</form>
+</br>
+
+<form action="MelissaExample" method="POST">
+<input type="submit" style="background-color:#ffcc99" name="endTurn" value=">>End Turn>>"/><br>
+<input type="hidden" name="url" value=URL/>
+</form>
+<!--*END OF TURN PART 2-->
+
+*UPDATES
+
+<!--top
+<p id="demo"></p></div>-->
+
+<script>
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+//*ROADS
+
+/* DRAWN LINE
+ctx.beginPath();
+ctx.strokeStyle="pink";
+ctx.moveTo(770,490);
+ctx.lineTo(770,580);
+ctx.lineWidth=5;
+ctx.stroke();
+*/
+
+function showCoords(event) {
+  var cX = event.clientX;
+  var sX = event.screenX;
+  var cY = event.clientY;
+  var sY = event.screenY;
+  var coords1 = "top - X: " + (cX-235) + ", Y coords: " + (cY-225);
+  var coords2 = "bottom - X: " + (cX-235) + ", Y coords: " + (415+cY);
+  document.getElementById("demo").innerHTML = coords1 + "<br>" + coords2;
+}
+</script>
+
+</body>
+</html>
