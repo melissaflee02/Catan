@@ -25,35 +25,35 @@ table, th {
 .brick {
 	background: url(/examples/servlets/images/brick.png);
 	background-repeat: no-repeat;
-	background-size: 75%;
+	background-size: 65%;
 	background-position: center;
 }
 
 .lumber {
 	background: url(/examples/servlets/images/lumber.png);
 	background-repeat: no-repeat;
-	background-size: 75%;
+	background-size: 65%;
 	background-position: center;
 }
 
 .ore {
 	background: url(/examples/servlets/images/ore.png);
 	background-repeat: no-repeat;
-	background-size: 75%;
+	background-size: 65%;
 	background-position: center;
 }
 
 .grain {
 	background: url(/examples/servlets/images/grain.png);
 	background-repeat: no-repeat;
-	background-size: 75%;
+	background-size: 65%;
 	background-position: center;
 }
 
 .wool {
 	background: url(/examples/servlets/images/wool.png);
 	background-repeat: no-repeat;
-	background-size: 75%;
+	background-size: 65%;
 	background-position: center;
 }
 
@@ -61,7 +61,7 @@ table, th {
 	color: black;
 	background: url(/examples/servlets/images/desert.png);
 	background-repeat: no-repeat;
-	background-size: 75%;
+	background-size: 65%;
 	background-position: center;
 }
 
@@ -155,8 +155,8 @@ table, th {
 }
 
 .sidenav {
-  overflow: hidden;
-  position: fixed;
+  overflow: scroll;
+  position: absolute;
   width: 15%;
   top: 70px;
   left: 10px;
@@ -303,16 +303,29 @@ Your browser does not support the canvas element.
 <br>
 
 <!--*CHOOSING SETTLEMENTS-->
-<table><tr>
+<table style="width:80%"><tr>
 <th style="padding:10px;background-color:red;color:black">
 Select a Location to Place an Initial Settlement:<br>
-<form action="MelissaExample" method="POST">
+<form action="CatanGame" method="POST">
 <select name="location">
 	<option value="selectLocation">Select Location</option>
 	*LOCATIONS
 </select>
+</th>
+<th style="padding:10px;background-color:red;color:black">
+Select two Locations to Place an Initial Road:<br>
+<p style="font-size:12px">WARNING! Be sure the road connects to the settlement.</p>
+<select name="location1">
+	<option value="selectLocation">Select Location</option>
+	*LOCATIONS
+</select>
+To<br>
+<select name="location2">
+	<option value="selectLocation">Select Location</option>
+	*LOCATIONS
+</select>
 <input type="submit" value="Submit"/><br>
-<input type="hidden" name="endTurn"/>
+<input type="hidden" name="initialSettlementAndRoad"/>
 <input type="hidden" name="url" value=URL/>
 </form></th>
 </form></th>
@@ -325,12 +338,12 @@ Select a Location to Place an Initial Settlement:<br>
 <th style="padding:10px;color:black">Play Development Card:</th>
 </tr><tr>
 <th style="padding:10px;color:black">
-<form action="MelissaExample" method="POST">
+<form action="CatanGame" method="POST">
 <input type="hidden" name="url" value=URL/>
 <input type="submit" name="rollDice" value="Roll Dice"/>
 </form></th>
 <th style="padding:10px;color:black">
-<form action="MelissaExample" method="POST">
+<form action="CatanGame" method="POST">
 <select name="devCard">
 	<option value="selectDevCard">Select Dev Card</option>
 	*DEV CARDS 1
@@ -355,7 +368,7 @@ Select a Location to Place an Initial Settlement:<br>
 </tr>
 <tr>
 <th style="padding:10px;color:black">
-<form action="MelissaExample" method="POST">
+<form action="CatanGame" method="POST">
 <select name="location1">
 	<option value="selectLocation">Select Location</option>
 	*ACCESSIBLE LOCATIONS 1
@@ -369,16 +382,16 @@ Select a Location to Place an Initial Settlement:<br>
 <input type="hidden" name="url" value=URL/>
 </form></th>
 <th style="padding:10px;color:black">
-<form action="MelissaExample" method="POST">
+<form action="CatanGame" method="POST">
 <select name="location">
 	<option value="selectLocation">Select Location</option>
-	*ACCESSIBLE LOCATIONS 1
+	*POTENTIAL SETTLEMENT LOCATIONS
 </select>
 <input type="submit" value="Submit"/><br>
 <input type="hidden" name="url" value=URL/>
 </form></th>
 <th style="padding:10px;color:black">
-<form action="MelissaExample" method="POST">
+<form action="CatanGame" method="POST">
 <select name="settlement">
 	<option value="selectSettlement">Select Settlement</option>
 	*SETTLEMENTS
@@ -387,12 +400,12 @@ Select a Location to Place an Initial Settlement:<br>
 <input type="hidden" name="url" value=URL/>
 </form></th>
 <th style="padding:10px;color:black">
-<form action="MelissaExample" method="POST">
+<form action="CatanGame" method="POST">
 <input type="hidden" name="url" value=URL/>
 <input type="submit" name="getDevCard" value="Purchase Dev Card"/>
 </form></th>
 <th style="padding:10px;color:black">
-<form action="MelissaExample" method="POST">
+<form action="CatanGame" method="POST">
 <select name="devCard">
 	<option value="selectDevCard">Select Dev Card</option>
 	*DEV CARDS 2
@@ -404,7 +417,7 @@ Select a Location to Place an Initial Settlement:<br>
 <br>
 <table><tr><td style="width:400px;border:1px solid black">
 <table>
-<form action="MelissaExample" method="POST">
+<form action="CatanGame" method="POST">
 <tr><th style="padding:10px;color:black;width:200px">Trade Resources With:</th>
 <th style="padding:10px;color:black">
 <select name="playerToTradeWith">
@@ -471,7 +484,7 @@ Select a Location to Place an Initial Settlement:<br>
 </form></th></tr></table>
 </td><td style="width:10px"></td><td style="width:400px;text-align:center;color:black;border:1px solid black">
 <strong>Exchange 4 Resources:</strong><br><br>
-<form action="MelissaExample" method="POST">
+<form action="CatanGame" method="POST">
 4 <select name="4cards">
 	<option value="selectResource">Select Resource</option>
 	<option value="Brick">Brick</option>
@@ -497,18 +510,18 @@ Select a Location to Place an Initial Settlement:<br>
 
 <br><strong>Click a Card Below to Claim:</strong><br>
 <table><tr><th style="width:250px">
-<form action="MelissaExample" method="POST">
+<form action="CatanGame" method="POST">
 <input type="image" src="/examples/servlets/images/longest_road.png" alt="longestRoadImage" width="250"/>
 <input type="hidden" name="longestRoad"/>
 <input type="hidden" name="url" value=URL/>
 </form></th>
-<th style="width:250px"><form action="MelissaExample" method="POST">
+<th style="width:250px"><form action="CatanGame" method="POST">
 <input type="image" src="/examples/servlets/images/largest_army.png" alt="largestArmyImage"  width="250"/><br>
 <input type="hidden" name="largestArmy"/>
 <input type="hidden" name="url" value=URL/>
 </form></th></tr></table>
 
-<form action="MelissaExample" method="POST">
+<form action="CatanGame" method="POST">
 <strong>Think You've Won? Click the Trophy!</strong>
 <input type="image" src="/examples/servlets/images/trophy.png" alt="trophyImage" width="50"/>
 <input type="hidden" name="checkWinner"/>
@@ -516,7 +529,7 @@ Select a Location to Place an Initial Settlement:<br>
 </form>
 </br>
 
-<form action="MelissaExample" method="POST">
+<form action="CatanGame" method="POST">
 <input type="submit" style="background-color:#ffcc99" name="endTurn" value=">>End Turn>>"/><br>
 <input type="hidden" name="url" value=URL/>
 </form>
