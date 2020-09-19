@@ -50,7 +50,8 @@ table {
 }
 </style>
 
-<h1 style="padding-left:10px">Welcome to Catan!<br><br></h1>
+<h1 style="padding-left:10px">Welcome to the Catan Login Page!<br></h1>
+<h2 style="padding-left:10px">Please have the <mark>host</mark> fill out the following information:<br><br></h2>
 <table><tr>
 <th style="width:25%"><center><img src = "/examples/servlets/images/catan.png" alt = "Catan Image"></center></th>
 
