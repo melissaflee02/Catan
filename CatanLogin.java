@@ -94,6 +94,6 @@ public class CatanLogin extends HttpServlet {
 			newLine = newLine.substring(0,newLine.length()-1);
 		}
 		out.print(output + "</tr></table></center>");
-		out.print("<br><h3 style=\"font-family:Helvetica;font-size:16px;text-align:right;padding-right:10px\">Ready to Play?</h3><form action=\"MelissaExample\" method=\"POST\" style=\"text-align:right;padding-right:10px\"><input type=\"hidden\" name=\"newLine\" value=" + newLine + "><strong>I'm Ready! </strong><input type=\"submit\" name=\"next\" value=\">>Let's Go!>>\"/></form>");
+		out.print("<br><h3 style=\"font-family:Helvetica;font-size:16px;text-align:right;padding-right:10px\">Ready to Play?</h3><form action=\"CatanGame\" method=\"POST\" style=\"text-align:right;padding-right:10px\"><input type=\"hidden\" name=\"newLine\" value=" + newLine + "><strong>I'm Ready! </strong><input type=\"submit\" name=\"next\" value=\">>Let's Go!>>\"/></form>");
 	}
 }
