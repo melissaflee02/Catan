@@ -12,8 +12,8 @@
 4:AA,AB.BD:AB,AA.AC:AC,AB.AD.BF:AD,AC.AE:AE,AD.AF.BH:AF,AE.AG:AG,AF.AH:AH,AG.AI.BI:AI,AH.AJ:AJ,AI.AK.BK:AK,AJ.AL:AL,AK.AM:AM,AL.AN.BL:AN,AM.AO:AO,AN.AP.BN:AP,AO.AQ:AQ,AP.AR:AR,AQ.AS.BO:AS,AR.AT:AT,AS.AU.BQ:AU,AT.AV:AV,AU.AW:AW,AV.AX.BR:AX,AW.AY:AY,AX.AZ.BT:AZ,AY.BA:BA,AZ.BB:BB,BA.BC.BU:BC,BB.BD:BD,AA.BC.BE:BE,BD.BF.BV:BF,AC.BE.AG:BG,BF.BH.BW:BH,AE.BG.BI:BI,AH.BH.BJ.:BJ,BI.BK.BX:BK,AJ.BJ.BL:BL,AM.BK.BM:BM,BL.BN.BY:BN,AO.BM.BO:BO,AR.BN.BP:BP,BO.BQ.BZ:BQ,AT.BP.BR:BR,AW.BQ.BS:BS,BR.BT.CA:BT,AY.BS.BU:BU,BB.BT.BV:BV,BE.BU.CB:BW,BG.BX.CB:BX,BJ.BW.BY:BY,BM.BX.BZ:BZ,BP.BY.CA:CA,BS.BZ.CB:CB,BV.BW.CA:
 5:AA,610,35:AB,690,80:AC,690,170:AD,770,215:AE,770,310:AF,850,355:AG,850,445:AH,770,490:AI,770,585:AJ,690,630:AK,690,720:AL,610,765:AM,530,720:AN,450,765:AO,370,720:AP,290,765:AQ,215,720:AR,215,630:AS,135,585:AT,135,490:AU,55,445:AV,55,355:AW,135,310:AX,135,215:AY,215,170:AZ,215,80:BA,290,35:BB,370,80:BC,450,35:BD,530,80:BE,530,170:BF,610,215:BG,610,310:BH,690,355:BI,690,445:BJ,610,490:BK,610,585:BL,530,630:BM,450,585:BN,370,630:BO,290,585:BP,290,490:BQ,215,445:BR,215,355:BS,290,310:BT,290,215:BU,370,170:BV,450,215:BW,530,355:BX,530,445:BY,450,490:BZ,370,445:CA,370,355:CB,450,310:
 6:K,14:RB,2:YP,2:M,2:VP,5
-7:Melissa,Blue:Ryan,Orange
-8:A new game has started.:takenLocations-[]:takenLocations-[]:Melissa has placed a settlement at location BM.:Melissa has ended their turn.:It is now Ryan's turn.:takenLocations-[BM, BL, BN, BY]
+7:John,Green:Jane,Red
+8:A new game has started.
 
 *9. Tile Resource, Tile Num, Tile Probability
 *10. Player Name , Color , Resources (separated by .) , Settlement location.type.worth (each separated by .) , Points , Development Cards (each separated by .) , Roads (separated by .) (Location 1 . Location 2)) , Army Size
@@ -22,9 +22,9 @@
 *13. Player with Longest Road
 *14. Player with Largest Army
 **START WRITING BELOW HERE**
-9:Ore,5,4:Grain,2,1:Ore,6,5:Lumber,3,2:Wool,8,5:Desert,0,0:Lumber,10,3:Wool,9,4:Grain,12,1:Wool,11,2:Brick,4,3:Brick,8,5:Grain,10,3:Lumber,9,4:Grain,4,3:Lumber,5,4:Ore,6,5:Wool,3,2:Brick,3,2
-10:Ryan,Orange,,,0,,,0:Melissa,Blue,,BM.House.1,1,,,0
-11:K:K:M:VP:VP:K:K:K:VP:K:K:VP:K:K:RB:M:K:K:YP:VP:K:K:YP:K:RB
+9:Wool,5,4:Brick,2,1:Grain,6,5:Wool,3,2:Lumber,8,5:Grain,10,3:Ore,9,4:Grain,12,1:Ore,11,2:Grain,4,3:Ore,8,5:Wool,10,3:Brick,9,4:Lumber,4,3:Lumber,5,4:Brick,6,5:Desert,0,0:Lumber,3,2:Wool,3,2
+10:John,Green,,,0,,,0:Jane,Red,,,0,,,0
+11:K:K:K:K:YP:K:K:K:K:M:RB:K:K:VP:YP:M:VP:RB:VP:K:VP:K:VP:K:K
 12:-1
 13:null
 14:null
